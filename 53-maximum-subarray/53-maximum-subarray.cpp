@@ -7,11 +7,11 @@ public:
 */
     
     int maxSubArray(vector<int>& nums) {
-        int sum = 0,mx = -INT_MAX;
-        for(int i=0;i<nums.size();i++){
+        int sum = nums[0],mx = nums[0];
+        for(int i=1;i<nums.size();i++){
+            if (sum<0) sum = 0;
             sum+= nums[i];
             if (sum>mx)mx = sum;
-            if (sum<0) sum = 0;
         }
         return mx;
     }
