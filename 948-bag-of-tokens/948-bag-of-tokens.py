@@ -1,21 +1,22 @@
-class Solution:
-    def bagOfTokensScore(self, tokens: List[int], power: int) -> int:
-        tokens.sort();N = len(tokens)
-        start = 0;end = N-1;score = 0
-        if N == 0 or tokens[0]>power: return 0;
-        while start<=end:
-            if power>=tokens[start]:
-                score += 1
-                power -= tokens[start]
-                start += 1
-            elif score>0:
-                power += tokens[end]
-                score -= 1
-                end -= 1
-            else:
-                break
-        if start<N and power>=tokens[start]:score += 1
-        return score
-                
-            
-        
+class Solution {
+public:
+    int bagOfTokensScore(vector<int>& tokens, int power) {
+        int N = tokens.size();int score = 0;
+        int start = 0;int end = N-1;
+        sort(tokens.begin(),tokens.end());
+        if (N == 0 || tokens[0]>power) return 0;
+        while (start<=end){
+            if (power>=tokens[start]){
+                power -= tokens[start];
+                start++;score++;
+            }
+            else if (score>0){
+                power += tokens[end];
+                end--;score--;
+            }
+            else break;
+        }
+        if (start<N and power>=tokens[start]) score++;
+        return score;
+    }
+};
