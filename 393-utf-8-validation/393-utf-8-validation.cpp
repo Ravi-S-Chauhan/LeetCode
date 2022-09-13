@@ -2,7 +2,7 @@ class Solution {
 public:
     bool validUtf8(vector<int>& data) {
         int check = 0;
-        for(auto each:data){
+        for(int each:data){
             if (check == 0){
                 if ((each>>7) == 0b0) check = 0;
                 else if ((each>>5) == 0b110) check = 1;
