@@ -1,6 +1,7 @@
 class Solution:
     def divide(self, dividend: int, divisor: int) -> int:
         if dividend == divisor : return 1  
+        if (dividend == -2147483648 and divisor == -1): return 2147483647
         positive = (dividend>0 and divisor>0 or dividend<0 and divisor<0)
         a = abs(dividend)
         b = abs(divisor)
@@ -12,5 +13,4 @@ class Solution:
             answer += (1<<q)
             a -= (b<<q)
         # print(positive)
-        ans =  answer if positive else -answer
-        return min(max(ans,-2147483648),2147483647)
+        return answer if positive else -answer
